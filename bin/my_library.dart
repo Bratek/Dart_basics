@@ -84,3 +84,16 @@ class BinaryCalculator {
     return dec;
   }
 }
+
+List<num> getNumFromString(String str) {
+  List<num> numList = [];
+  //List<String> strList = str.split('');
+
+  str.split("").forEach((item) {
+    if ('0123456789'.indexOf(item) != -1) {
+      numList.add(num.parse(item));
+    }
+  });
+
+  return numList;
+}

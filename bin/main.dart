@@ -22,4 +22,8 @@ void main() {
 
   var dec = bc.binToDec(bin);
   print('dec = $dec');
+
+  print('\nДомашнее задание 2.6.3:');
+  var numList = getNumFromString('Th1s 5tr1ng c0nt4ins numb3r5');
+  print('Num list: $numList');
 }
