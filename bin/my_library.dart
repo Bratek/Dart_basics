@@ -58,3 +58,29 @@ class DelimetersCalculator {
     return factors;
   }
 }
+
+class BinaryCalculator {
+  String decToBin(int dec) {
+    String bin = '';
+
+    while (dec > 1) {
+      bin = (dec % 2).toString() + bin;
+      dec = dec ~/ 2;
+    }
+
+    bin = dec.toString() + bin;
+    return bin;
+  }
+
+  int binToDec(String bin) {
+    int dec = 0;
+
+    for (int i = bin.length - 1, k = 0; i >= 0; i--, k++) {
+      if (bin[i] == '1') {
+        dec += pow(2, k).toInt();
+      }
+    }
+
+    return dec;
+  }
+}

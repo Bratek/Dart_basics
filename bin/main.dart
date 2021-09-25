@@ -12,4 +12,14 @@ void main() {
   var factors = dc.primeFactors(308);
 
   print('Простые множители числа : $factors');
+
+  print('\nДомашнее задание 2.6.2:');
+
+  var bc = BinaryCalculator();
+
+  String bin = bc.decToBin(2021);
+  print('bin = $bin');
+
+  var dec = bc.binToDec(bin);
+  print('dec = $dec');
 }
