@@ -87,10 +87,9 @@ class BinaryCalculator {
 
 List<num> getNumFromString(String str) {
   List<num> numList = [];
-  //List<String> strList = str.split('');
 
   str.split("").forEach((item) {
-    if ('0123456789'.indexOf(item) != -1) {
+    if ('0123456789'.contains(item)) {
       numList.add(num.parse(item));
     }
   });
