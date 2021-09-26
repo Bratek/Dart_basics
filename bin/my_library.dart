@@ -99,20 +99,42 @@ List<num> getNumFromString(String str) {
 
 Map<String, int> getMapOfOccurrences(List<String> collection) {
   Map<String, int> _map = {};
-  int _count = 0;
 
-  collection.forEach((element) {
+  for (var element in collection) {
     _map.putIfAbsent(
         element.toString(), () => getCountOfOccurrences(element, collection));
-  });
-
+  }
   return _map;
 }
 
 int getCountOfOccurrences(String word, List<String> collection) {
   int _count = 0;
-  collection.forEach((element) {
+
+  for (var element in collection) {
     if (element == word) _count++;
-  });
+  }
   return _count;
+}
+
+Set<int> getNumbersFromCollection(List<String> collection) {
+  Map<String, int> _pattern = {
+    'zero': 0,
+    'one': 1,
+    'two': 2,
+    'three': 3,
+    'four': 4,
+    'five': 5,
+    'six': 6,
+    'seven': 7,
+    'eight': 8,
+    'nine': 9
+  };
+  Set<int> _numbers = {};
+
+  for (String elem in collection) {
+    if (_pattern.containsKey(elem)) {
+      _numbers.add(_pattern[elem]!.toInt());
+    }
+  }
+  return _numbers;
 }

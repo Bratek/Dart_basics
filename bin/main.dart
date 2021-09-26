@@ -1,6 +1,7 @@
 import 'my_library.dart';
 
 void main() {
+  //////////////////////////////////////////////////////////////////
   print('Домашнее задание 2.6.1:');
 
   int a = 15, b = 25;
@@ -13,6 +14,7 @@ void main() {
 
   print('Простые множители числа : $factors');
 
+  //////////////////////////////////////////////////////////////////
   print('\nДомашнее задание 2.6.2:');
 
   var bc = BinaryCalculator();
@@ -23,10 +25,12 @@ void main() {
   var dec = bc.binToDec(bin);
   print('dec = $dec');
 
+//////////////////////////////////////////////////////////////////
   print('\nДомашнее задание 2.6.3:');
   var numList = getNumFromString('Th1s 5tr1ng c0nt4ins numb3r5');
   print('Num list: $numList');
 
+//////////////////////////////////////////////////////////////////
   print('\nДомашнее задание 2.6.4:');
   List<String> _collection = [
     'cat',
@@ -50,4 +54,10 @@ void main() {
   ];
   var _map = getMapOfOccurrences(_collection);
   print('Map вхождений: $_map');
+
+//////////////////////////////////////////////////////////////////
+  print('\nДомашнее задание 2.6.5:');
+  List<String> _numCollection = ['one', 'two', 'three', 'cat', 'dog'];
+  var _resolted = getNumbersFromCollection(_numCollection);
+  print('В колекции найдены цифры: $_resolted');
 }
