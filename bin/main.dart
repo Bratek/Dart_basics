@@ -26,4 +26,28 @@ void main() {
   print('\nДомашнее задание 2.6.3:');
   var numList = getNumFromString('Th1s 5tr1ng c0nt4ins numb3r5');
   print('Num list: $numList');
+
+  print('\nДомашнее задание 2.6.4:');
+  List<String> _collection = [
+    'cat',
+    'dog',
+    'cow',
+    'horse',
+    'dog',
+    'cow',
+    'cow',
+    'rooster',
+    'cow',
+    'hen',
+    'hen',
+    'hen',
+    'hen',
+    'cat',
+    'hen',
+    'cow',
+    'hen',
+    'hen',
+  ];
+  var _map = getMapOfOccurrences(_collection);
+  print('Map вхождений: $_map');
 }

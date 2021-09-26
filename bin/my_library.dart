@@ -33,11 +33,11 @@ class Param {
 
 class DelimetersCalculator {
   int gcd(int a, int b) {
-    var param = Param(a, b);
-    while (param.aboveZero()) {
-      param.modulo();
+    var _param = Param(a, b);
+    while (_param.aboveZero()) {
+      _param.modulo();
     }
-    return param.a;
+    return _param.a;
   }
 
   int lcm(int a, int b) => (a / gcd(a, b) * b).toInt();
@@ -61,15 +61,15 @@ class DelimetersCalculator {
 
 class BinaryCalculator {
   String decToBin(int dec) {
-    String bin = '';
+    String _bin = '';
 
     while (dec > 1) {
-      bin = (dec % 2).toString() + bin;
+      _bin = (dec % 2).toString() + _bin;
       dec = dec ~/ 2;
     }
 
-    bin = dec.toString() + bin;
-    return bin;
+    _bin = dec.toString() + _bin;
+    return _bin;
   }
 
   int binToDec(String bin) {
@@ -86,13 +86,33 @@ class BinaryCalculator {
 }
 
 List<num> getNumFromString(String str) {
-  List<num> numList = [];
+  List<num> _numList = [];
 
   str.split("").forEach((item) {
     if ('0123456789'.contains(item)) {
-      numList.add(num.parse(item));
+      _numList.add(num.parse(item));
     }
   });
 
-  return numList;
+  return _numList;
+}
+
+Map<String, int> getMapOfOccurrences(List<String> collection) {
+  Map<String, int> _map = {};
+  int _count = 0;
+
+  collection.forEach((element) {
+    _map.putIfAbsent(
+        element.toString(), () => getCountOfOccurrences(element, collection));
+  });
+
+  return _map;
+}
+
+int getCountOfOccurrences(String word, List<String> collection) {
+  int _count = 0;
+  collection.forEach((element) {
+    if (element == word) _count++;
+  });
+  return _count;
 }
