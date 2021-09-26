@@ -33,11 +33,11 @@ class Param {
 
 class DelimetersCalculator {
   int gcd(int a, int b) {
-    var _param = Param(a, b);
-    while (_param.aboveZero()) {
-      _param.modulo();
+    var param = Param(a, b);
+    while (param.aboveZero()) {
+      param.modulo();
     }
-    return _param.a;
+    return param.a;
   }
 
   int lcm(int a, int b) => (a / gcd(a, b) * b).toInt();
@@ -61,15 +61,15 @@ class DelimetersCalculator {
 
 class BinaryCalculator {
   String decToBin(int dec) {
-    String _bin = '';
+    String bin = '';
 
     while (dec > 1) {
-      _bin = (dec % 2).toString() + _bin;
+      bin = (dec % 2).toString() + bin;
       dec = dec ~/ 2;
     }
 
-    _bin = dec.toString() + _bin;
-    return _bin;
+    bin = dec.toString() + bin;
+    return bin;
   }
 
   int binToDec(String bin) {
@@ -86,38 +86,38 @@ class BinaryCalculator {
 }
 
 List<num> getNumFromString(String str) {
-  List<num> _numList = [];
+  List<num> numList = [];
 
   str.split("").forEach((item) {
     if ('0123456789'.contains(item)) {
-      _numList.add(num.parse(item));
+      numList.add(num.parse(item));
     }
   });
 
-  return _numList;
+  return numList;
 }
 
 Map<String, int> getMapOfOccurrences(List<String> collection) {
-  Map<String, int> _map = {};
+  Map<String, int> map = {};
 
   for (var element in collection) {
-    _map.putIfAbsent(
+    map.putIfAbsent(
         element.toString(), () => getCountOfOccurrences(element, collection));
   }
-  return _map;
+  return map;
 }
 
 int getCountOfOccurrences(String word, List<String> collection) {
-  int _count = 0;
+  int count = 0;
 
   for (var element in collection) {
-    if (element == word) _count++;
+    if (element == word) count++;
   }
-  return _count;
+  return count;
 }
 
 Set<int> getNumbersFromCollection(List<String> collection) {
-  Map<String, int> _pattern = {
+  Map<String, int> pattern = {
     'zero': 0,
     'one': 1,
     'two': 2,
@@ -129,12 +129,59 @@ Set<int> getNumbersFromCollection(List<String> collection) {
     'eight': 8,
     'nine': 9
   };
-  Set<int> _numbers = {};
+  Set<int> numbers = {};
 
   for (String elem in collection) {
-    if (_pattern.containsKey(elem)) {
-      _numbers.add(_pattern[elem]!.toInt());
+    if (pattern.containsKey(elem)) {
+      numbers.add(pattern[elem]!.toInt());
     }
   }
-  return _numbers;
+  return numbers;
+}
+
+class Point {
+  double _x;
+  double _y;
+  double _z;
+
+  Point(this._x, this._y, this._z);
+
+  //Единичный вектор. Направление от (0.0.0) задается параметром vector
+  factory Point.unitVector(Point vector) {
+    double distVector =
+        sqrt(pow(vector.x, 2) + pow(vector.y, 2) + pow(vector.z, 2));
+    return Point(
+        vector.x / distVector, vector.y / distVector, vector.z / distVector);
+  }
+
+  factory Point.random() {
+    Random rand = Random();
+    return Point(rand.nextDouble(), rand.nextDouble(), rand.nextDouble());
+  }
+
+  factory Point.zero() {
+    return Point(0, 0, 0);
+  }
+
+  double get x => _x;
+  double get y => _y;
+  double get z => _z;
+
+  double distanceTo(Point another) {
+    final double distance = sqrt(pow(another.x - _x, 2) +
+        pow(another.y - _y, 2) +
+        pow(another.z - _z, 2));
+
+    return distance;
+  }
+}
+
+double areaOfTeiangle(Point p1, Point p2, Point p3) {
+  double a = p1.distanceTo(p2);
+  double b = p2.distanceTo(p3);
+  double c = p3.distanceTo(p1);
+  double p = (a + b + c) / 2;
+  double s = sqrt(p * (p - a) * (p - b) * (p - c));
+
+  return s;
 }

@@ -60,4 +60,14 @@ void main() {
   List<String> _numCollection = ['one', 'two', 'three', 'cat', 'dog'];
   var _resolted = getNumbersFromCollection(_numCollection);
   print('В колекции найдены цифры: $_resolted');
+
+  /////////////////////////////////////////////////////////////////
+  print('\nДомашнее задание 2.6.6:');
+  double distanceVector = Point(10, 15, 20).distanceTo(Point(30, 45, 60));
+  print('Длина вектора: : $distanceVector');
+  double distanceUnitVector =
+      Point.zero().distanceTo(Point.unitVector(Point(100, 100, 100)));
+  print('Длина единичного вектора: $distanceUnitVector');
+  double area = areaOfTeiangle(Point.random(), Point.random(), Point.random());
+  print('Площадь треугольника : $area');
 }
