@@ -79,4 +79,25 @@ void main() {
   } catch (e) {
     print(e);
   }
+
+  /////////////////////////////////////////////////////////////////
+  print('\nДомашнее задание 2.6.8:');
+
+  var userManager = UserManager();
+
+  var admin = AdminUser('admin@mail.ru');
+  var general = GeneralUser('general@gmail.ru');
+  var userok = User('userok@e-mail.ru');
+  var lord = GeneralUser('lord@list.ru');
+  var adminchik = AdminUser('adminchik@bk.ru');
+
+  userManager.add(admin);
+  userManager.add(general);
+  userManager.add(userok);
+  userManager.add(lord);
+  userManager.add(adminchik);
+
+  userManager.del(userok);
+
+  print('Список менеджера: $userManager');
 }

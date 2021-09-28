@@ -207,3 +207,46 @@ extension AdditionalFunction on num {
     return root;
   }
 }
+
+class User {
+  final String _email;
+
+  User(this._email);
+
+  get email => _email;
+}
+
+class AdminUser extends User with MailSystem {
+  AdminUser(String email) : super(email);
+}
+
+class GeneralUser extends User {
+  GeneralUser(String email) : super(email);
+}
+
+mixin MailSystem on User {
+  String get getMailSystem => _email.split('@').last;
+}
+
+class UserManager<T extends User> {
+  final List<T> _users = [];
+
+  void add(T user) => _users.add(user);
+
+  void del(T user) => _users.remove(user);
+
+  @override
+  String toString() {
+    String res = '';
+
+    for (var elem in _users) {
+      if (elem is AdminUser) {
+        res += elem.getMailSystem + '; ';
+      } else {
+        res += elem._email + '; ';
+      }
+    }
+
+    return res;
+  }
+}
