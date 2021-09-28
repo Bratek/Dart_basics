@@ -185,3 +185,25 @@ double areaOfTeiangle(Point p1, Point p2, Point p3) {
 
   return s;
 }
+
+extension AdditionalFunction on num {
+  double rootOfDegree(int degree) {
+    double eps = 0.001;
+    double original = toDouble();
+    double rn = original;
+    double root = rn / degree;
+
+    if (degree % 2 == 0 && isNegative) {
+      throw ArgumentError('Отрицательное основание');
+    }
+
+    while ((root - rn).abs() >= eps) {
+      rn = original;
+      for (int i = 1; i < degree; i++) {
+        rn = rn / root;
+      }
+      root = (rn + root) / 2;
+    }
+    return root;
+  }
+}

@@ -70,4 +70,13 @@ void main() {
   print('Длина единичного вектора: $distanceUnitVector');
   double area = areaOfTeiangle(Point.random(), Point.random(), Point.random());
   print('Площадь треугольника : $area');
+
+/////////////////////////////////////////////////////////////////
+  print('\nДомашнее задание 2.6.7:');
+  try {
+    double root = 625.rootOfDegree(4);
+    print('Корень n-степени: $root');
+  } catch (e) {
+    print(e);
+  }
 }
